@@ -1,0 +1,7 @@
+---
+- include: add_swap.yml
+- include: set_timezone.yml
+- include: enable_ufw.yml
+- include: install_supervisor.yml
+- include: install_mailhog.yml
+- include: install_packages.yml
