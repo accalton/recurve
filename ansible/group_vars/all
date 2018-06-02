@@ -1,12 +1,12 @@
 # This will be the hostname and virtualhost servername. It should end with `.dev`.
 # If you need to include vhost-specific directives for the primary vhost, add
 # them to the existing `files/vhost_fragment.conf.j2` file.
-hostname: example.dev
+hostname: recurve.dev
 
 # This var is used in Vagrantfile, so embedded vars (e.g., hostname)
 # will *not* be interpolated. Be sure to update the TLD and 2LD
 # accordingly.
-email_hostname: email.example.dev
+email_hostname: email.recurve.dev
 
 # Use this if you have additional server aliases for the primary vhost (not
 # additional vhosts).
@@ -24,7 +24,7 @@ email_hostname: email.example.dev
 #    - minio.example.dev
 
 # This is the private address. Grab the next available from the Google spreadsheet.
-private_address: 192.168.202.101
+private_address: 192.168.16.102
 
 # This is the public html directory inside the app
 public_dir: web
@@ -46,11 +46,15 @@ document_root: /var/www/{{ hostname }}/{{ public_dir }}
 
 # Add all required PHP modules to this list
 php_modules:
+    - curl
+    - dom
+    - gd
+    - mbstring
     - mcrypt
 
 # Specify one or more databases to be created
 mysql_databases:
-    - example
+    - recurve
 
 # Specify apt packages
 packages:
@@ -64,5 +68,5 @@ packages:
 # You can also change the certpath for the local copy of the
 # self-signed cert if you really want to.
 #
-# trust_cert: 1
-# certpath: /usr/local/etc
+trust_cert: 1
+certpath: /usr/local/etc
